@@ -1,6 +1,7 @@
 package enums;
 
 public enum Houses {
+    DEFAULT("Homeless", 0, ""),
     HOUSE1("House One", 100000, "Location One"),
     HOUSE2("House Two", 200000, "Location Two"),
     HOUSE3("House Three", 300000, "Location Three"),
@@ -32,6 +33,6 @@ public enum Houses {
 
     public String toString()
     {
-        return this.name + " Price: " + this.price + " Location: " + this.location;
+        return this.name + ", Price: " + this.price + ", Location: " + this.location;
     }
 }

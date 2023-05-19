@@ -21,6 +21,8 @@ public class DataFile {
     public DataFile(String filename) {
         file = new File(filename);
         readFile();
+        this.data = new DataFields();
+        initializeDataFields();
     }
 
     private void readFile() {
@@ -42,27 +44,61 @@ public class DataFile {
         }
         return fileString.toString();
     }
+
+    public void initializeDataFields()
+    {
+        for (String line : fileLines) {
+             String[] split = line.split("=");
+            if (line.startsWith("money =")) {
+                if(split.length > 1) {
+                    this.data.setMoney(Integer.parseInt(split[1].trim()));
+                } else {
+                    this.data.setMoney(0);
+                }
+            } else if (line.toLowerCase().startsWith("house")) {
+                if(split.length > 1) {
+                    this.data.setHouse(split[1].trim());
+                } else {
+                    this.data.setHouse("DEFAULT");
+                }
+            } else if (line.toLowerCase().startsWith("car")) {
+                if(split.length > 1) {
+                    this.data.setCar(split[1].trim());
+                } else {
+                    this.data.setCar("DEFAULT");
+                }
+            } else if (line.toLowerCase().startsWith("job")) {
+                if(split.length > 1) {
+                    this.data.setJob(split[1].trim());
+                } else {
+                    this.data.setJob("DEFAULT");
+                }
+            }
+        }
+    }
+
     public void updateData(int money) // Updates stored value (not file) of money field
     {
         data.setMoney(money);
     }
-    public void updateData(Enum field) {
-        for (String line : fileLines) {
-            if (field instanceof Houses && line.startsWith("house")) {
-                String[] parts = line.split("=");
-                data.setHouse(parts[1].trim());
-            } else if (field instanceof Cars && line.startsWith("car")) {
-                String[] parts = line.split("=");
-                data.setCar(parts[1].trim());
-            } else if (field instanceof Jobs && line.startsWith("job")) {
-                String[] parts = line.split("=");
-                data.setJob(parts[1].trim());
-            }
+    public void updateDataField(Enum field) // Updates stored value (not file) of money field
+    {
+        if(field instanceof Cars)
+        {
+            data.setCar(field.toString());
+        }
+        else if(field instanceof Houses)
+        {
+            data.setHouse(field.toString());
+        }
+        else if(field instanceof Jobs)
+        {
+            data.setJob(field.toString());
         }
     }
 
     public String toString()
     {
-        return this.printFile() + "Data: " + this.data;
+        return this.printFile() + "\nData: \n" + this.data;
     }
 }

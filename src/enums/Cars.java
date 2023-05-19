@@ -3,6 +3,7 @@ package enums;
 
 public enum Cars
 {
+    DEFAULT("Bike", 0, 25),
     CAR1("Car One", 100000, 40),
     CAR2("Car Two", 200000, 60),
     CAR3("Car Three", 300000, 80),
@@ -33,6 +34,6 @@ public enum Cars
 
     public String toString()
     {
-        return name + " Price: " + price + " Max speed: " + maxSpeed;
+        return name + ", Price: " + price + ", Max speed: " + maxSpeed;
     }
 }

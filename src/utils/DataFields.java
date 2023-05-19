@@ -13,6 +13,13 @@ public class DataFields
     Jobs job;
 
 
+    public DataFields()
+    {
+        this.money = 0;
+        this.car = null;
+        this.house = null;
+        this.job = null;
+    }
     public DataFields(int money, Cars car, Houses house, Jobs job)
     {
         this.money = money;

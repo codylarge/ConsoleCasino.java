@@ -2,6 +2,7 @@ package enums;
 
 public enum Jobs
 {
+    DEFAULT("Unemployed", 250, ""),
     JOB1("Job One", 1000, "Location One"),
     JOB2("Job Two", 2500, "Location Two"),
     JOB3("Job Three", 5000, "Location Three"),
@@ -33,6 +34,6 @@ public enum Jobs
 
     public String toString()
     {
-        return this.name + " Salary: " + this.getSalary() + " Location: " + this.location;
+        return this.name + ", Salary: " + this.getSalary() + ", Location: " + this.location;
     }
 }

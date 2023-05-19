@@ -1,8 +1,8 @@
 DATA
 money = 100
-job = null
-house = null
-car = null
+job =
+house =
+car =
 --------------------
 STATS
 Roulette:

@@ -6,7 +6,7 @@ public class Main
     public static void main(String[] args)
     {
         DataFile df = new DataFile();
-        df.updateData(Cars.CAR1);
+        df.updateDataField(Cars.CAR1);
         System.out.println("\n\n\n");
         System.out.println(df);
     }
