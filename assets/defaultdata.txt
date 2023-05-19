@@ -1,8 +1,8 @@
 DATA
 money = 100
-job = Unemployed, Salary: 250, Location: 
-house = Homeless, Price: 0, Location: 
-car = Bike, Price: 0, Max speed: 25
+job =
+house =
+car =
 --------------------
 STATS
 Roulette:

@@ -64,4 +64,21 @@ public class DataFields
     {
         return "Money: " + this.money + "\nCar: " + this.car + "\nHouse: " + this.house + "\nJob: " + this.job;
     }
+
+    public int getMoney()
+    {
+        return this.money;
+    }
+    public Cars getCar()
+    {
+        return this.car;
+    }
+    public Houses getHouse()
+    {
+        return this.house;
+    }
+    public Jobs getJob()
+    {
+        return this.job;
+    }
 }

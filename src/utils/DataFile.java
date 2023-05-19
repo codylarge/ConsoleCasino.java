@@ -5,6 +5,7 @@ import enums.Jobs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -56,19 +57,19 @@ public class DataFile {
                     this.data.setMoney(0);
                 }
             } else if (line.toLowerCase().startsWith("house")) {
-                if(split.length > 1) {
+                if(split.length > 1 && !split[1].contains("null")) {
                     this.data.setHouse(split[1].trim());
                 } else {
                     this.data.setHouse("DEFAULT");
                 }
             } else if (line.toLowerCase().startsWith("car")) {
-                if(split.length > 1) {
+                if(split.length > 1 && !split[1].contains("null")) {
                     this.data.setCar(split[1].trim());
                 } else {
                     this.data.setCar("DEFAULT");
                 }
             } else if (line.toLowerCase().startsWith("job")) {
-                if(split.length > 1) {
+                if(split.length > 1 && !split[1].contains("null")) {
                     this.data.setJob(split[1].trim());
                 } else {
                     this.data.setJob("DEFAULT");
@@ -97,6 +98,25 @@ public class DataFile {
         }
     }
 
+    public void updateFile() {
+        try (PrintWriter writer = new PrintWriter(file)) {
+            for (String line : fileLines) {
+                if (line.startsWith("money =")) {
+                    writer.println("money = " + data.getMoney());
+                } else if (line.toLowerCase().startsWith("house")) {
+                    writer.println("house = " + data.getHouse());
+                } else if (line.toLowerCase().startsWith("car")) {
+                    writer.println("car = " + data.getCar());
+                } else if (line.toLowerCase().startsWith("job")) {
+                    writer.println("job = " + data.getJob());
+                } else {
+                    writer.println(line);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+    }
     public String toString()
     {
         return this.printFile() + "\nData: \n" + this.data;
