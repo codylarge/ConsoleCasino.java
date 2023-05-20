@@ -1,0 +1,28 @@
+DATA
+money = 1000
+job = JOB7
+house = HOUSE4
+car = CAR3
+--------------------
+STATS
+Roulette:
+money lost = 0
+money won = 0
+rounds played = 0
+
+Blackjack:
+money lost = 0
+money won = 0
+rounds played = 0
+
+Craps:
+money lost = 0
+money won = 0
+rounds played = 0
+--------------------
+PRIZES:
+ESPORTS v2:
+W8XEE1-S53463
+W40K1Y-9SAS47
+SG7KDW-RQR63S
+21KAQX-4T9ZS4

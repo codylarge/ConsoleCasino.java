@@ -1,14 +1,17 @@
 package enums;
 
-public enum Jobs
+import interfaces.Data;
+
+public enum Jobs implements Data
 {
-    DEFAULT("Unemployed", 250, ""),
-    JOB1("Job One", 1000, "Location One"),
-    JOB2("Job Two", 2500, "Location Two"),
-    JOB3("Job Three", 5000, "Location Three"),
-    JOB4("Job Four", 10000, "Location Four"),
-    JOB5("Job Five", 25000, "Location Five"),
-    JOB6("Job Six", 100000, "Location Six");
+    DEFAULTJOB("Unemployed", 250, ""),
+    JOB1("Plumber", 50000, "Contract-Contract"),
+    JOB2("Teacher", 80000, "School"),
+    JOB3("Professor", 150000, "College"),
+    JOB4("Programmer", 300000, "Microsoft"),
+    JOB5("Doctor", 1000000, "Hospital"),
+    JOB6("CEO", 2500000, "Microsoft HQ"),
+    JOB7("PRESIDENT", 9999999, "White House"); //Easter egg #1
 
     private String name;
     private int salary;
@@ -20,9 +23,7 @@ public enum Jobs
         this.location = location;
     }
 
-    public String getName() {
-        return name;
-    }
+
 
     public int getSalary() {
         return salary;
@@ -32,6 +33,17 @@ public enum Jobs
         return location;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+    @Override
+    public String writeToFile()
+    {
+        return this.name();
+    }
+
+    @Override
     public String toString()
     {
         return this.name + ", Salary: " + this.getSalary() + ", Location: " + this.location;

@@ -1,13 +1,16 @@
 package enums;
 
-public enum Houses {
-    DEFAULT("Homeless", 0, ""),
-    HOUSE1("House One", 100000, "Location One"),
-    HOUSE2("House Two", 200000, "Location Two"),
-    HOUSE3("House Three", 300000, "Location Three"),
-    HOUSE4("House Four", 400000, "Location Four"),
-    HOUSE5("House Five", 500000, "Location Five"),
-    HOUSE6("House Six", 600000, "Location Six");
+import interfaces.Data;
+
+public enum Houses implements Data
+{
+    DEFAULTHOUSE("Homeless", 0, ""),
+    HOUSE1("Studio Apartment", 100000, "Boondocks"),
+    HOUSE2("Condo", 200000, "City"),
+    HOUSE3("House", 400000, "Country"),
+    HOUSE4("Penthouse", 500000, "City Center"),
+    HOUSE5("Villa", 750000, "Italy"),
+    HOUSE6("Mansion", 1000000, "Russia");
 
     private String name;
     private int price;
@@ -18,19 +21,23 @@ public enum Houses {
         this.price = price;
         this.location = location;
     }
-
-    public String getName() {
-        return name;
-    }
-
     public int getPrice() {
         return price;
     }
-
     public String getLocation() {
         return location;
     }
+    @Override
+    public String getName() {
+        return name;
+    }
+    @Override
+    public String writeToFile()
+    {
+        return this.name();
+    }
 
+    @Override
     public String toString()
     {
         return this.name + ", Price: " + this.price + ", Location: " + this.location;

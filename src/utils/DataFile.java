@@ -9,15 +9,21 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-public class DataFile {
+
+// The DataFile class is the main data class in this program, It stores the DataFields object which contains quick access data such as money and character items (car, house, job)
+// It also contains the file being used in the program and has the ability to update the file with values stored its DataFields object (Whenever user saves)
+// Upon creation, it immediately fills The DataFields variables money, car, house, and job with the values from the file.
+public class DataFile
+{
     private File file;
     private List<String> fileLines;
     private DataFields data;
 
 
+    /* FILE METHODS */
     public DataFile()
     {
-        this("src/data.txt");
+        this("src/save1.txt");
     }
     public DataFile(String filename) {
         file = new File(filename);
@@ -46,69 +52,18 @@ public class DataFile {
         return fileString.toString();
     }
 
-    public void initializeDataFields()
-    {
-        for (String line : fileLines) {
-             String[] split = line.split("=");
-            if (line.startsWith("money =")) {
-                if(split.length > 1) {
-                    this.data.setMoney(Integer.parseInt(split[1].trim()));
-                } else {
-                    this.data.setMoney(0);
-                }
-            } else if (line.toLowerCase().startsWith("house")) {
-                if(split.length > 1 && !split[1].contains("null")) {
-                    this.data.setHouse(split[1].trim());
-                } else {
-                    this.data.setHouse("DEFAULT");
-                }
-            } else if (line.toLowerCase().startsWith("car")) {
-                if(split.length > 1 && !split[1].contains("null")) {
-                    this.data.setCar(split[1].trim());
-                } else {
-                    this.data.setCar("DEFAULT");
-                }
-            } else if (line.toLowerCase().startsWith("job")) {
-                if(split.length > 1 && !split[1].contains("null")) {
-                    this.data.setJob(split[1].trim());
-                } else {
-                    this.data.setJob("DEFAULT");
-                }
-            }
-        }
-    }
-
-    public void updateData(int money) // Updates stored value (not file) of money field
-    {
-        data.setMoney(money);
-    }
-    public void updateDataField(Enum field) // Updates stored value (not file) of money field
-    {
-        if(field instanceof Cars)
-        {
-            data.setCar(field.toString());
-        }
-        else if(field instanceof Houses)
-        {
-            data.setHouse(field.toString());
-        }
-        else if(field instanceof Jobs)
-        {
-            data.setJob(field.toString());
-        }
-    }
-
-    public void updateFile() {
+    public void updateFile()
+    { // Updates the file associated with this object with the data in the DataFields object
         try (PrintWriter writer = new PrintWriter(file)) {
             for (String line : fileLines) {
                 if (line.startsWith("money =")) {
                     writer.println("money = " + data.getMoney());
                 } else if (line.toLowerCase().startsWith("house")) {
-                    writer.println("house = " + data.getHouse());
+                    writer.println("house = " + data.getHouse().writeToFile());
                 } else if (line.toLowerCase().startsWith("car")) {
-                    writer.println("car = " + data.getCar());
+                    writer.println("car = " + data.getCar().writeToFile());
                 } else if (line.toLowerCase().startsWith("job")) {
-                    writer.println("job = " + data.getJob());
+                    writer.println("job = " + data.getJob().writeToFile());
                 } else {
                     writer.println(line);
                 }
@@ -117,6 +72,67 @@ public class DataFile {
             System.out.println("File not found");
         }
     }
+
+
+
+    /* DATAFIELD METHODS */
+    public void initializeDataFields()
+    { //initialize data fields from file and enters them into the DataFile object's data
+        for (String line : fileLines) {
+             String[] split = line.split("=");
+            if (line.startsWith("money =")) {
+                if(split.length > 1) {
+                    this.updateDataField(Integer.parseInt(split[1].trim()));
+                } else {
+                    this.updateDataField(0);
+                }
+            } else if (line.toLowerCase().startsWith("house")) { // TODO:remove duplicate code in if statements
+                if(split.length > 1 && !split[1].contains("null")) {
+                    this.updateDataField(split[1].trim());
+                } else {
+                    this.updateDataField("DEFAULTHOUSE");
+                }
+            } else if (line.toLowerCase().startsWith("car")) {
+                if(split.length > 1 && !split[1].contains("null")) {
+                    this.updateDataField(split[1].trim());
+                } else {
+                    this.updateDataField("DEFAULTCAR");
+                }
+            } else if (line.toLowerCase().startsWith("job")) {
+                if(split.length > 1 && !split[1].contains("null")) {
+                    this.updateDataField(split[1].trim());
+                } else {
+                    this.updateDataField("DEFAULTJOB");
+                }
+            }
+        }
+    }
+    public void updateDataField(int money) // Updates stored value (not file) of money field
+    {
+        this.data.setMoney(money);
+    }
+    public void updateDataField(String field) // Updates stored value (not file) of money field
+    {
+        String uc = field.toUpperCase();
+        if(uc.contains("CAR"))
+        {
+            this.data.setCar(uc);
+        }
+        else if(uc.contains("HOUSE"))
+        {
+            this.data.setHouse(uc);
+        }
+        else if(uc.contains("JOB"))
+        {
+            this.data.setJob(uc);
+        }
+        else
+        {
+            throw new IllegalArgumentException("Field not found: " + field);
+        }
+    }
+
+
     public String toString()
     {
         return this.printFile() + "\nData: \n" + this.data;

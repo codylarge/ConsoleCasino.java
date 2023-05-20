@@ -4,6 +4,9 @@ import enums.Cars;
 import enums.Houses;
 import enums.Jobs;
 
+
+// The DataFields class is a class that stores some data about the player that will be changed throughout the game such as cash for easy access.
+// The DataFields class also contains methods to read and update data.
 public class DataFields
 {
     /* DATA */
@@ -26,6 +29,11 @@ public class DataFields
         this.car = car;
         this.house = house;
         this.job = job;
+    }
+
+    public void setMoney(int money)
+    {
+        this.money = money;
     }
 
     public void setJob(String job)
@@ -54,17 +62,6 @@ public class DataFields
             System.out.println("House not found: " + house);
         }
     }
-
-    public void setMoney(int money)
-    {
-        this.money = money;
-    }
-
-    public String toString()
-    {
-        return "Money: " + this.money + "\nCar: " + this.car + "\nHouse: " + this.house + "\nJob: " + this.job;
-    }
-
     public int getMoney()
     {
         return this.money;
@@ -80,5 +77,10 @@ public class DataFields
     public Jobs getJob()
     {
         return this.job;
+    }
+
+    public String toString()
+    {
+        return "Money: " + this.money + "\nCar: " + this.car + "\nHouse: " + this.house + "\nJob: " + this.job;
     }
 }

@@ -1,15 +1,17 @@
 package enums;
 //test
 
-public enum Cars
+import interfaces.Data;
+
+public enum Cars implements Data
 {
-    DEFAULT("Bike", 0, 25),
-    CAR1("Car One", 100000, 40),
-    CAR2("Car Two", 200000, 60),
-    CAR3("Car Three", 300000, 80),
-    CAR4("Car Four", 400000, 120),
-    CAR5("Car Five", 500000, 150),
-    CAR6("Car Six", 600000, 200);
+    DEFAULTCAR("Bike", 0, 25),
+    CAR1("Golf Cart", 25000, 40),
+    CAR2("Honda Civic", 100000, 60),
+    CAR3("BMW M5", 200000, 80),
+    CAR4("BMW M8", 300000, 120),
+    CAR5("Ferrari 488 GTB", 500000, 150),
+    CAR6("Lamborghini Huracán", 750000, 200);
 
     private String name;
     private int price, maxSpeed;
@@ -20,9 +22,7 @@ public enum Cars
         this.maxSpeed = maxSpeed;
     }
 
-    public String getName() {
-        return name;
-    }
+
 
     public int getPrice() {
         return price;
@@ -32,6 +32,16 @@ public enum Cars
         return maxSpeed + "mph";
     }
 
+    @Override
+    public String writeToFile()
+    {
+        return this.name();
+    }
+    @Override
+    public String getName() {
+        return name;
+    }
+    @Override
     public String toString()
     {
         return name + ", Price: " + price + ", Max speed: " + maxSpeed;
