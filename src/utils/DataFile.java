@@ -21,16 +21,27 @@ public class DataFile
 
 
     /* FILE METHODS */
-    public DataFile()
+    public DataFile(File file)
     {
-        this("src/save1.txt");
-    }
-    public DataFile(String filename) {
-        file = new File(filename);
+        this.file = file;
         readFile();
         this.data = new DataFields();
         initializeDataFields();
     }
+
+    public DataFields getData()
+    {
+        return data;
+    }
+    public List<String> getFileLines()
+    {
+        return fileLines;
+    }
+    public File getFile()
+    {
+        return file;
+    }
+
 
     private void readFile() {
         fileLines = new ArrayList<>();
@@ -51,28 +62,6 @@ public class DataFile
         }
         return fileString.toString();
     }
-
-    public void updateFile()
-    { // Updates the file associated with this object with the data in the DataFields object
-        try (PrintWriter writer = new PrintWriter(file)) {
-            for (String line : fileLines) {
-                if (line.startsWith("money =")) {
-                    writer.println("money = " + data.getMoney());
-                } else if (line.toLowerCase().startsWith("house")) {
-                    writer.println("house = " + data.getHouse().writeToFile());
-                } else if (line.toLowerCase().startsWith("car")) {
-                    writer.println("car = " + data.getCar().writeToFile());
-                } else if (line.toLowerCase().startsWith("job")) {
-                    writer.println("job = " + data.getJob().writeToFile());
-                } else {
-                    writer.println(line);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        }
-    }
-
 
 
     /* DATAFIELD METHODS */
@@ -131,7 +120,6 @@ public class DataFile
             throw new IllegalArgumentException("Field not found: " + field);
         }
     }
-
 
     public String toString()
     {
