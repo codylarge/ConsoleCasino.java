@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcad1870-2a7d-4c5b-a9d6-ea32a29c9823" name="Changes" comment="test2">
-      <change afterPath="$PROJECT_DIR$/src/Console.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/MenuManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/defaultdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/defaultdata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/Cars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Cars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/Houses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Houses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Jobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SaveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SaveManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saves/admin_save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saves/admin_save.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MenuManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +97,7 @@
       <workItem from="1684457021335" duration="84000" />
       <workItem from="1684460757759" duration="748000" />
       <workItem from="1684461966650" duration="3231000" />
-      <workItem from="1684523458483" duration="22452000" />
+      <workItem from="1684523458483" duration="29187000" />
     </task>
     <task id="LOCAL-00001" summary="test2">
       <created>1684457099714</created>

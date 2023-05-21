@@ -1,7 +1,7 @@
 DATA
 money = 1000
 job = JOB7
-house = HOUSE4
+house = HOUSE6
 car = CAR3
 --------------------
 STATS
