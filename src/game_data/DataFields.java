@@ -1,4 +1,4 @@
-package utils;
+package game_data;
 
 import enums.Cars;
 import enums.Houses;

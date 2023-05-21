@@ -1,11 +1,7 @@
-package utils;
-import enums.Cars;
-import enums.Houses;
-import enums.Jobs;
+package game_data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -123,6 +119,6 @@ public class DataFile
 
     public String toString()
     {
-        return this.printFile() + "\nData: \n" + this.data;
+        return "\n File: \n" + this.printFile() + "\nData: \n" + this.data;
     }
 }

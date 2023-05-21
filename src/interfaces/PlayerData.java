@@ -1,6 +1,6 @@
 package interfaces;
 
-// PlayerData interface represents player data such as Car, Job, House etc.
+// All enums that represent player data will implement this interface.
 public interface PlayerData
 {
     public String getName(); // ALl data objects will have a name corresponding to the word used in the file.

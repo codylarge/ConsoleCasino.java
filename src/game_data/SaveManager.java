@@ -1,4 +1,4 @@
-package utils;
+package game_data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,11 +10,17 @@ public class SaveManager
     DataFile df; // SaveManager will prompt user for datafile when created, must use SaveManager.getDataFile() to access df object in gameManager.
     public SaveManager()
     {
-        this.df = new DataFile(selectSaveFile());
+        this.df = new DataFile(selectSaveFile()); // When creating saveManager, prompt user for save file immediately.
     }
+
     public DataFile getDataFile()
     {
         return this.df;
+    }
+
+    public String getSaveFileData()
+    {
+        return(this.df.getData().toString());
     }
 
     public void saveToFile()
@@ -92,10 +98,10 @@ public class SaveManager
                     return selectedSave;
                 }
 
-            } else {
+            } else { // No files in directory
                 System.out.println("No files found in the specified directory.");
             }
-        } else {
+        } else { // Directory doesn't exist
             System.out.println("Invalid directory path.");
         }
         return null; // If no file is found, return null and handle it in calling method

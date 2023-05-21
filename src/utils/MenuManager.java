@@ -2,84 +2,91 @@ package utils;
 
 import java.util.Scanner;
 
-// This class builds menus for the game. It is all void methods, it just runs through the requested menu returns the choice
-// This prevents the MenuManager class from needing access to any data.
+// This class builds menus for the game. It is completely static and therefore should NEVER be instantiated.
+// Each method only prints the requested menu and returns a VALID user input
 public class MenuManager
 {
-    Scanner sc;
-    public MenuManager()
-    {
-        sc = new Scanner(System.in);
-    }
+    static Scanner sc = new Scanner(System.in);
+    private MenuManager() { throw new IllegalStateException("Utility class: " + this.getClass().toString() + " should not be instantiated"); }
 
-    public int mainMenu()
+    public static int mainMenu()
     {
+        int bounds [] = {1,4}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
         System.out.println("Welcome To ConsoleCasino! What would you like to do?");
         System.out.println("[1] Play game");
         System.out.println("[2] How to play?");
         System.out.println("[3] View saves");
         System.out.println("[4] Exit");
         int choice = sc.nextInt();
-        clearConsole();
-        if(choice > 4 || choice < 1)
+        if( !(choice < bounds[0]) && !(choice > bounds[1])) // Kinda sloppy but it must be checked for IN bounds BEFORE outbounds for the recursion to work
         {
-                System.out.println("Invalid choice");
-                mainMenu();
+            clearConsole();
+            return choice;
+        } else {
+            System.out.println("Invalid choice");
+            return mainMenu();
         }
-        return choice;
     }
 
-    public int gameMenu() // This is the menu the user goes to directly after selecting save, calls respective menu's directly as no data is needed
+    public static int gameMenu() // This is the menu the user goes to directly after selecting save, calls respective menu's directly as no data is needed
     {
+        int bounds [] = {1,3}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
         System.out.println("Where would you like to go?");
         System.out.println("[1] Home");
         System.out.println("[2] Casino");
         System.out.println("[3] Job");
         int choice = sc.nextInt();
-        clearConsole();
-        if(choice > 3 || choice < 1)
+        if( !(choice < bounds[0]) && !(choice > bounds[1]))
         {
+            clearConsole();
+            return choice;
+        } else {
             System.out.println("Invalid choice");
-            gameMenu();
+            return gameMenu();
         }
-        return choice;
     }
 
-    public int jobMenu()
+    public static int jobMenu()
     {
+        int bounds [] = {1,4}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
         System.out.println("What would you like to do?");
         System.out.println("[1] Work");
         System.out.println("[2] View job description");
         System.out.println("[3] Ask for a raise");
         System.out.println("[4] Back");
         int choice = sc.nextInt();
-        if(choice > 4 || choice < 1)
+        if( !(choice < bounds[0]) && !(choice > bounds[1]))
         {
+            clearConsole();
+            return choice;
+        } else {
             System.out.println("Invalid choice");
-            mainMenu();
+            return jobMenu();
         }
-        return choice;
     }
 
-    public int houseMenu()
+    public static int houseMenu()
     {
+        int bounds [] = {1,4}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
         System.out.println("What would you like to do?");
         System.out.println("[1] View house");
         System.out.println("[2] View car");
-        System.out.println("[3] View job");
-        System.out.println("[4] Save/Exit game");
-        System.out.println("[5] Back");
+        System.out.println("[3] Save/Exit game");
+        System.out.println("[4] Back");
         int choice = sc.nextInt();
-        if(choice > 5 || choice < 1)
+        if( !(choice < bounds[0]) && !(choice > bounds[1]))
         {
+            clearConsole();
+            return choice;
+        } else {
             System.out.println("Invalid choice");
-            mainMenu();
+            return houseMenu();
         }
-        return choice;
     }
 
-    public int casinoMenu()
+    public static int casinoMenu()
     {
+        int bounds [] = {1,5}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
         System.out.println("What would you like to do?");
         System.out.println("[1] Blackjack");
         System.out.println("[2] Roulette");
@@ -87,12 +94,14 @@ public class MenuManager
         System.out.println("[4] View prizes");
         System.out.println("[5] Back");
         int choice = sc.nextInt();
-        if(choice > 5 || choice < 1)
+        if( !(choice < bounds[0]) && !(choice > bounds[1]))
         {
+            clearConsole();
+            return choice;
+        } else {
             System.out.println("Invalid choice");
-            mainMenu();
+            return casinoMenu();
         }
-        return choice;
     }
 
     public static void clearConsole() {
