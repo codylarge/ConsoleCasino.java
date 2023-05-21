@@ -1,8 +1,8 @@
 package enums;
 
-import interfaces.Data;
+import interfaces.PlayerData;
 
-public enum Houses implements Data
+public enum Houses implements PlayerData
 {
     DEFAULTHOUSE("Homeless", 0, ""),
     HOUSE1("Studio Apartment", 100000, "Boondocks"),

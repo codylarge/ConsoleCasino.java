@@ -1,8 +1,8 @@
 package enums;
 
-import interfaces.Data;
+import interfaces.PlayerData;
 
-public enum Jobs implements Data
+public enum Jobs implements PlayerData
 {
     DEFAULTJOB("Unemployed", 250, ""),
     JOB1("Plumber", 50000, "Contract-Contract"),

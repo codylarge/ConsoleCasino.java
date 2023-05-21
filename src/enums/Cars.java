@@ -1,9 +1,9 @@
 package enums;
 //test
 
-import interfaces.Data;
+import interfaces.PlayerData;
 
-public enum Cars implements Data
+public enum Cars implements PlayerData
 {
     DEFAULTCAR("Bike", 0, 25),
     CAR1("Golf Cart", 25000, 40),
