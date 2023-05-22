@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcad1870-2a7d-4c5b-a9d6-ea32a29c9823" name="Changes" comment="test2">
+      <change afterPath="$PROJECT_DIR$/src/utils/GameUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saves/save1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saves/save1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DataFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/DataFields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/DataFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/Cars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Cars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/Houses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Houses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Jobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game_data/SaveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/SaveManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MenuManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SaveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/SaveManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,7 @@
       <workItem from="1684460757759" duration="748000" />
       <workItem from="1684461966650" duration="3231000" />
       <workItem from="1684523458483" duration="31239000" />
-      <workItem from="1684683943361" duration="8856000" />
+      <workItem from="1684683943361" duration="21713000" />
     </task>
     <task id="LOCAL-00001" summary="test2">
       <created>1684457099714</created>

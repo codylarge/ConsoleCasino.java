@@ -28,8 +28,22 @@ public enum Cars implements PlayerData
         return price;
     }
 
-    public String getMaxSpeed() {
-        return maxSpeed + "mph";
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+    public int getCarNumber()
+    {
+        return this.ordinal();
+    }
+    public void listAll(int currentCar) // lists all cars above the current car
+    {
+        int i = currentCar + 1;
+        for (Cars car : Cars.values()) {
+            if (car.ordinal() > currentCar) {
+                System.out.println("[" + i + "]" + car);
+                i++;
+            }
+        }
     }
 
     @Override

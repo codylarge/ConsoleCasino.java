@@ -1,5 +1,8 @@
 package game_data;
 
+import enums.Cars;
+import enums.Houses;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -13,12 +16,13 @@ public class SaveManager
         this.df = new DataFile(selectSaveFile()); // When creating saveManager, prompt user for save file immediately.
     }
 
+    /* GETTERS */
     public DataFile getDataFile()
     {
         return this.df;
     }
 
-    public String getSaveFileData()
+    public String getSaveFileData() // returns dataFile of current save
     {
         return(this.df.getData().toString());
     }
@@ -43,7 +47,7 @@ public class SaveManager
             System.out.println("File not found");
         }
     }
-    public File selectSaveFile()
+    public File selectSaveFile() // Returns null if user wants to go back to main menu
     {
         Scanner userInput = new Scanner(System.in);
         String directoryPath = "saves";
@@ -62,13 +66,20 @@ public class SaveManager
                     }
                 }
                 System.out.println("[" +(++i)+ "]" + " Create new save");
+                System.out.println("[" +(++i)+ "]" + " Exit");
                 int choice = userInput.nextInt();
 
                 /* INVALID CHOICE */
-                if(choice < 1 ||  choice > files.length + 1)
+                if(choice < 1 ||  choice > files.length + 3)
                 {
                     System.out.println("Invalid choice.");
                     return null;
+                }
+
+                /* EXIT */
+                else if(choice == files.length + 2)
+                {
+                    System.exit(0);
                 }
 
                 /* CREATE NEW FILE */
@@ -97,6 +108,7 @@ public class SaveManager
                     File selectedSave = files[choice - 1]; // Creates file object of the selected save file
                     return selectedSave;
                 }
+                /* GO BACK */
 
             } else { // No files in directory
                 System.out.println("No files found in the specified directory.");

@@ -33,6 +33,17 @@ public enum Jobs implements PlayerData
         return location;
     }
 
+    public void listAll(int currentJob)
+    {
+        int i = currentJob + 1;
+        for (Jobs job : Jobs.values()) {
+            if (job.ordinal() > currentJob) {
+                System.out.println("[" + i + "]" + job);
+                i++;
+            }
+        }
+    }
+
     @Override
     public String getName() {
         return name;

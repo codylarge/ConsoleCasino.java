@@ -1,7 +1,10 @@
+import enums.Cars;
+import enums.Houses;
 import game_data.DataFile;
 import utils.MenuManager;
 import game_data.SaveManager;
 
+import java.awt.*;
 import java.util.Scanner;
 
 // GameMaster is a singleton class and only one can exist at any given time. Access using GameMaster.getInstance()
@@ -13,7 +16,7 @@ public class GameMaster
     SaveManager save;
     private GameMaster()
     {
-        startGame();
+        runMainMenu();
     }
     public static GameMaster getInstance()
     {
@@ -21,22 +24,88 @@ public class GameMaster
         return instance;
     }
 
-    public void startGame() // MAIN MENU
+    public void runMainMenu() // MAIN MENU
     {
         int input = MenuManager.mainMenu();
-        if(input == 1) {
-            this.save = new SaveManager(); // Play Option
-            this.gameData = this.save.getDataFile();
-            runGameMenu();
-        } else if(input == 2) {
-            System.out.println("How to play?");
-        } else if(input == 3) {
-            System.out.println("View saves");
-            SaveManager viewSaves = new SaveManager();
-            System.out.println("Your save: \n" + viewSaves.getSaveFileData() + "\n");
-        } else if(input == 4) {
-            System.exit(0);
+        switch (input)
+        {
+            case 1:
+                this.save = new SaveManager(); // Play Option
+                this.gameData = this.save.getDataFile();
+                runGameMenu();
+                break;
+            case 2:
+                System.out.println("How to play?");
+                break;
+            case 3:
+                System.out.println("View saves");
+                String readSaveFile = new SaveManager().getSaveFileData();
+                System.out.println("Your save: \n" + readSaveFile + "\n");
+                break;
+            case 4:
+                System.exit(0);
+                break;
+            default: // Secret code entry
+                if(input == 2534)
+                {
+                    System.out.println("Data management mode entered.");
+                    runDataManagementMode(new SaveManager());
+                }
         }
+    }
+    public void upgradeItem()
+    { // TODO: Finish upgradeItem by adding the ability to buy items and update the save file
+        Scanner input = new Scanner(System.in);
+        int choice = MenuManager.upgradeShopMenu();
+        switch(choice)
+        {
+            case 1:
+                System.out.println("What house would you like to buy?\n");
+                Houses currentHouse = this.save.getDataFile().getData().getHouse();
+                int currentHouseOrd = currentHouse.getHouseNumber();
+                currentHouse.listAll(currentHouseOrd);
+                break;
+            case 2:
+                System.out.println("What car would you like to buy?\n");
+                Cars currentCar = this.save.getDataFile().getData().getCar();
+                int currentCarOrd = currentCar.getCarNumber();
+                currentCar.listAll(currentCarOrd);
+                break;
+            case 3:
+                runGameMenu();
+                break;
+            default:
+                System.out.println("Invalid input. Please try again.");
+                upgradeItem();
+        }
+        System.out.println();
+    }
+
+    public void runDataManagementMode(SaveManager saveToChange) // When this method is called, GameMaster does not yet have a SaveManager, so one is passed as a parameter for temporary use
+    {
+        Scanner inputs = new Scanner(System.in);
+        int dataToManipulate = MenuManager.dataManagementMenu(); // 1-> MONEY | 2-> HOUSE | 3-> CAR | 4-> JOB | 5-> BACK
+        if(dataToManipulate == 5) // User wants to go back to main menu
+        {
+            runMainMenu();
+            return;
+        }
+        System.out.print("Enter new value: ");
+        String newValue = inputs.nextLine();
+
+        switch (dataToManipulate)
+        {
+            case 1: // occurs when user wants to change money
+                int newMoney = Integer.parseInt(newValue);
+                saveToChange.getDataFile().updateDataField(newMoney);
+                break;
+            default: // default occurs when user wants to change a value that is represented by an enum
+                saveToChange.getDataFile().updateDataField(newValue);
+                break;
+        }
+        saveToChange.saveToFile();
+        System.out.println("Changes saved");
+        runDataManagementMode(saveToChange);
     }
 
     public void runGameMenu() // GAME MENU
@@ -46,9 +115,10 @@ public class GameMaster
             runHome();
         } else if(requestedMenu == 2) { // CASINO MENU 1: PLAY BLACKJACK 2: PLAY ROULETTE 3: PLAY COIN-FLIPS 4: VIEW PRIZES 5: BACK
             runCasino();
-
         } else if(requestedMenu == 3) { // JOB MENU 1: WORK 2: VIEW JOB DESCRIPTION 3: ASK FOR A RAISE 4: BACK
             runJob();
+        } else if(requestedMenu == 4) { // UPGRADE MENU: 1: HOUSE 2: CAR
+            upgradeItem();
         }
 
     }
@@ -140,6 +210,11 @@ public class GameMaster
              System.out.println("Invalid input, please try again");
              return yesNoInput(sc.nextLine());
          }
+     }
+
+     private SaveManager temporarySaveManagement()
+     {
+         return new SaveManager();
      }
 
 }

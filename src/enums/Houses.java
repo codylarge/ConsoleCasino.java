@@ -27,6 +27,23 @@ public enum Houses implements PlayerData
     public String getLocation() {
         return location;
     }
+
+    public int getHouseNumber()
+    {
+        return this.ordinal();
+    }
+
+    public void listAll(int currentHouse)
+    {
+        int i = currentHouse + 1;
+        for (Houses house : Houses.values()) {
+            if (house.ordinal() > currentHouse) {
+                System.out.println("[" + i + "]" + house);
+                i++;
+            }
+        }
+    }
+
     @Override
     public String getName() {
         return name;
