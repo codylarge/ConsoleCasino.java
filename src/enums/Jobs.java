@@ -1,8 +1,8 @@
 package enums;
 
-import interfaces.PlayerData;
+import interfaces.EnumData;
 
-public enum Jobs implements PlayerData
+public enum Jobs implements EnumData<Jobs>
 {
     DEFAULTJOB("Unemployed", 250, ""),
     JOB1("Plumber", 50000, "Contract-Contract"),
@@ -33,7 +33,7 @@ public enum Jobs implements PlayerData
         return location;
     }
 
-    public void listAll(int currentJob)
+    public void listAll(int currentJob) //input -1 to list all
     {
         int i = currentJob + 1;
         for (Jobs job : Jobs.values()) {
@@ -42,6 +42,28 @@ public enum Jobs implements PlayerData
                 i++;
             }
         }
+    }
+
+    @Override
+    public int getPrice()
+    {
+        return this.salary;
+    }
+
+    @Override
+    public int upgrade() {
+        return 0;
+    }
+
+    @Override
+    public Jobs exists(int index)
+    {
+        for (Jobs j : Jobs.values()) {
+            if (j.ordinal() == index) {
+                return j;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -1,6 +1,10 @@
 import enums.Cars;
 import enums.Houses;
+import enums.Jobs;
+import game_data.DataFields;
 import game_data.DataFile;
+import interfaces.EnumData;
+import utils.GameUtils;
 import utils.MenuManager;
 import game_data.SaveManager;
 
@@ -12,8 +16,8 @@ import java.util.Scanner;
 public class GameMaster
 {
     private static GameMaster instance;
-    DataFile gameData;
-    SaveManager save;
+    private DataFields gameData;
+    private SaveManager save;
     private GameMaster()
     {
         runMainMenu();
@@ -31,7 +35,7 @@ public class GameMaster
         {
             case 1:
                 this.save = new SaveManager(); // Play Option
-                this.gameData = this.save.getDataFile();
+                this.gameData = this.save.getDataFile().getData();
                 runGameMenu();
                 break;
             case 2:
@@ -45,7 +49,7 @@ public class GameMaster
             case 4:
                 System.exit(0);
                 break;
-            default: // Secret code entry
+            default: // Secret code entry, Easter egg #2
                 if(input == 2534)
                 {
                     System.out.println("Data management mode entered.");
@@ -57,19 +61,19 @@ public class GameMaster
     { // TODO: Finish upgradeItem by adding the ability to buy items and update the save file
         Scanner input = new Scanner(System.in);
         int choice = MenuManager.upgradeShopMenu();
+        boolean purchaseSuccessful = false;
         switch(choice)
         {
             case 1:
                 System.out.println("What house would you like to buy?\n");
-                Houses currentHouse = this.save.getDataFile().getData().getHouse();
+                Houses currentHouse = this.gameData.getHouse();
                 int currentHouseOrd = currentHouse.getHouseNumber();
                 currentHouse.listAll(currentHouseOrd);
                 break;
             case 2:
-                System.out.println("What car would you like to buy?\n");
-                Cars currentCar = this.save.getDataFile().getData().getCar();
-                int currentCarOrd = currentCar.getCarNumber();
-                currentCar.listAll(currentCarOrd);
+                Cars currentCar = this.gameData.getCar(); // Car that is currently owned
+                int upgradeChoice = currentCar.upgrade();
+                purchaseSuccessful = makePurchase(currentCar, upgradeChoice);
                 break;
             case 3:
                 runGameMenu();
@@ -79,6 +83,36 @@ public class GameMaster
                 upgradeItem();
         }
         System.out.println();
+    }
+
+    // type: The enum constant currently owned by user in the field being upgraded
+    // upgradeChoice: The menu choice(ordinal) of the requested upgrade
+    private boolean makePurchase(EnumData type, int upgradeChoice) // Helper method for upgradeItem returns whether the purchase was successful. upgradeChoice is the ordinal of the enum to upgrade to
+    {
+        int money = this.gameData.getMoney();
+        EnumData upgrade = null;
+        if(type instanceof Cars) {
+            Cars currentCar = (Cars) type;
+            upgrade = GameUtils.getCarAt(upgradeChoice); // TODO implement for all types
+        }
+        else if(type instanceof Houses) {
+
+        }
+        else if(type instanceof Jobs) {
+
+        } else {
+
+        }
+        System.out.println("Want to upgrade to: " + upgrade + "?");
+        int price = upgrade.getPrice(); // TODO implement actually purchasing all items
+        if(price > money) {
+            System.out.println("You do not have enough money to buy this item.");
+        } else {
+            this.gameData.setMoney(money - price);
+            System.out.println("Purchase successful.");
+            return true;
+        }
+        return false;
     }
 
     public void runDataManagementMode(SaveManager saveToChange) // When this method is called, GameMaster does not yet have a SaveManager, so one is passed as a parameter for temporary use

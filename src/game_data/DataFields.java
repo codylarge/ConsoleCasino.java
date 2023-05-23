@@ -53,7 +53,6 @@ public class DataFields
             System.out.println("Car not found: " + car);
         }
     }
-
     public void setHouse(String house)
     {
         try {

@@ -1,8 +1,8 @@
 package enums;
 
-import interfaces.PlayerData;
+import interfaces.EnumData;
 
-public enum Houses implements PlayerData
+public enum Houses implements EnumData<Houses>
 {
     DEFAULTHOUSE("Homeless", 0, ""),
     HOUSE1("Studio Apartment", 100000, "Boondocks"),
@@ -10,7 +10,8 @@ public enum Houses implements PlayerData
     HOUSE3("House", 400000, "Country"),
     HOUSE4("Penthouse", 500000, "City Center"),
     HOUSE5("Villa", 750000, "Italy"),
-    HOUSE6("Mansion", 1000000, "Russia");
+    HOUSE6("Mansion", 1000000, "Russia"),
+    HOUSE7("Mars", 20, "Milky Way"); //Easter egg #3, must find elon musk to obtain house
 
     private String name;
     private int price;
@@ -24,6 +25,12 @@ public enum Houses implements PlayerData
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public int upgrade() {
+        return 0;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -41,6 +48,18 @@ public enum Houses implements PlayerData
                 System.out.println("[" + i + "]" + house);
                 i++;
             }
+        }
+    }
+
+    @Override
+    public Houses exists(int index) {
+        {
+            for (Houses s : Houses.values()) {
+                if (s.ordinal() == index) {
+                    return s;
+                }
+            }
+            return null;
         }
     }
 

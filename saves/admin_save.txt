@@ -1,5 +1,5 @@
 DATA
-money = 1000
+money = 9999999999999
 job = JOB7
 house = HOUSE6
 car = CAR3

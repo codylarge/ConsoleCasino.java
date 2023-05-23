@@ -1,8 +1,8 @@
 DATA
-money = 10
-job = JOB7
-house = HOUSE6
-car = CAR6
+money = 2000001
+job = JOB1
+house = HOUSE1
+car = CAR1
 --------------------
 STATS
 Roulette:
