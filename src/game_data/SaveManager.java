@@ -1,8 +1,5 @@
 package game_data;
 
-import enums.Cars;
-import enums.Houses;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

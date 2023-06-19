@@ -1,8 +1,8 @@
 package utils;
 
-import enums.Cars;
-import enums.Houses;
-import enums.Jobs;
+import player_data.enums.Cars;
+import player_data.enums.Houses;
+import player_data.enums.Jobs;
 
 import java.util.Scanner;
 

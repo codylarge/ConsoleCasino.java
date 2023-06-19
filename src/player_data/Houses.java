@@ -1,4 +1,4 @@
-package enums;
+package player_data.enums;
 
 import interfaces.EnumData;
 

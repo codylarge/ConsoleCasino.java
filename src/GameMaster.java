@@ -1,14 +1,15 @@
-import enums.Cars;
-import enums.Houses;
-import enums.Jobs;
+import player_data.Cars;
+import player_data.Houses;
+import player_data.Jobs;
+import player_data.enums.Cars;
+import player_data.enums.Houses;
+import player_data.enums.Jobs;
 import game_data.DataFields;
-import game_data.DataFile;
 import interfaces.EnumData;
 import utils.GameUtils;
 import utils.MenuManager;
 import game_data.SaveManager;
 
-import java.awt.*;
 import java.util.Scanner;
 
 // GameMaster is a singleton class and only one can exist at any given time. Access using GameMaster.getInstance()
@@ -62,13 +63,14 @@ public class GameMaster
         Scanner input = new Scanner(System.in);
         int choice = MenuManager.upgradeShopMenu();
         boolean purchaseSuccessful = false;
+        EnumData current = null;
         switch(choice)
         {
             case 1:
                 System.out.println("What house would you like to buy?\n");
-                Houses currentHouse = this.gameData.getHouse();
-                int currentHouseOrd = currentHouse.getHouseNumber();
-                currentHouse.listAll(currentHouseOrd);
+                current = this.gameData.getHouse();
+                int currentHouseOrd = current.getHouseNumber();
+                current.listAll(currentHouseOrd);
                 break;
             case 2:
                 Cars currentCar = this.gameData.getCar(); // Car that is currently owned
@@ -88,7 +90,7 @@ public class GameMaster
     // type: The enum constant currently owned by user in the field being upgraded
     // upgradeChoice: The menu choice(ordinal) of the requested upgrade
     private boolean makePurchase(EnumData type, int upgradeChoice) // Helper method for upgradeItem returns whether the purchase was successful. upgradeChoice is the ordinal of the enum to upgrade to
-    {
+    { // TODO: This method should be combined with upgradeItem()
         int money = this.gameData.getMoney();
         EnumData upgrade = null;
         if(type instanceof Cars) {

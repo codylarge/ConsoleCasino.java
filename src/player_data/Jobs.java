@@ -1,4 +1,4 @@
-package enums;
+package player_data.enums;
 
 import interfaces.EnumData;
 
@@ -65,7 +65,11 @@ public enum Jobs implements EnumData<Jobs>
         }
         return null;
     }
-
+    @Override
+    public int getNumber()
+    {
+        return this.ordinal();
+    }
     @Override
     public String getName() {
         return name;

@@ -1,11 +1,9 @@
-package enums;
+package player_data.enums;
 //test
 
 import interfaces.EnumData;
 
-import java.util.Scanner;
-
-public enum Cars implements EnumData<Cars>
+public enum Cars implements EnumData<Cars> // TODO: Transform into class with parent enum data. leave this enum with ONLY constants to be read by associated class
 { // Max speed in MPH
     DEFAULTCAR("Bike", 0, 25),
     CAR1("Golf Cart", 25000, 40),
@@ -31,10 +29,9 @@ public enum Cars implements EnumData<Cars>
     public int getMaxSpeed() {
         return maxSpeed;
     }
-    public int getCarNumber()
-    {
-        return this.ordinal();
-    }
+
+
+    @Override
     public void listAll(int currentCar) // lists all cars above the current car
     {
         int i = currentCar + 1;
@@ -44,17 +41,6 @@ public enum Cars implements EnumData<Cars>
                 i++;
             }
         }
-    }
-
-    @Override
-    public Cars exists(int index)
-    {
-        for (Cars c : Cars.values()) {
-            if (c.ordinal() == index) {
-                return c;
-            }
-        }
-        return null;
     }
     public int upgrade() // When upgrading with this as current car
     { // TODO, this responsibility should lie in the GameMaster class
@@ -74,6 +60,13 @@ public enum Cars implements EnumData<Cars>
         }
         return upgradeChoice;
     }
+
+    @Override
+    public int getNumber()
+    {
+        return this.ordinal();
+    }
+
     @Override
     public String writeToFile()
     {
@@ -83,6 +76,17 @@ public enum Cars implements EnumData<Cars>
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public Cars exists(int index) // Returns the enum if it exists, otherwise null
+    {
+        for (Cars c : Cars.values()) {
+            if (c.ordinal() == index) {
+                return c;
+            }
+        }
+        return null;
     }
 
     @Override

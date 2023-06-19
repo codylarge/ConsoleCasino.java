@@ -1,8 +1,11 @@
 package game_data;
 
-import enums.Cars;
-import enums.Houses;
-import enums.Jobs;
+import player_data.Cars;
+import player_data.Houses;
+import player_data.Jobs;
+import player_data.enums.Cars;
+import player_data.enums.Houses;
+import player_data.enums.Jobs;
 
 
 // The DataFields class is a class that stores some data about the player that will be changed throughout the game such as cash for easy access.
