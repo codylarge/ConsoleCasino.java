@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcad1870-2a7d-4c5b-a9d6-ea32a29c9823" name="Changes" comment="test2">
-      <change afterPath="$PROJECT_DIR$/saves/default_save.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player_data/Car.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player_data/House.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player_data/PlayerItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saves/admin_save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saves/admin_save.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saves/save1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/saves/save1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_data/DataFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/DataFields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_data/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/DataFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_data/SaveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_data/SaveManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/EnumData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player_data/Cars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player_data/enums/Cars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player_data/Houses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player_data/enums/Houses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player_data/Jobs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/GameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/GameUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MenuManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="fcad1870-2a7d-4c5b-a9d6-ea32a29c9823" name="Changes" comment="test2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +116,7 @@
       <workItem from="1684951840055" duration="2809000" />
       <workItem from="1684993595072" duration="2970000" />
       <workItem from="1687223305937" duration="2966000" />
-      <workItem from="1687234401894" duration="45628000" />
+      <workItem from="1687234401894" duration="45969000" />
     </task>
     <task id="LOCAL-00001" summary="test2">
       <created>1684457099714</created>
