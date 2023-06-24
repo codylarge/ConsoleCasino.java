@@ -1,7 +1,7 @@
 DATA
-money = 999999
-house = HOUSE6
-car = CAR3
+money = 1000
+house = DEFAULTHOUSE
+car = DEFAULTCAR
 --------------------
 STATS
 Roulette:

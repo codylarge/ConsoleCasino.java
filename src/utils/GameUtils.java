@@ -2,7 +2,6 @@ package utils;
 
 import player_data.enums.Cars;
 import player_data.enums.Houses;
-import player_data.enums.Jobs;
 
 import java.util.Scanner;
 
@@ -27,15 +26,6 @@ public class GameUtils
 
     public static Houses getHouseAt(int n) {
         Houses[] values = Houses.values();
-        if (n >= 0 && n < values.length) {
-            return values[n];
-        }
-        return null; // or throw an exception indicating invalid input
-    }
-
-    public static Jobs getJobAt(int n)
-    {
-        Jobs[] values = Jobs.values();
         if (n >= 0 && n < values.length) {
             return values[n];
         }

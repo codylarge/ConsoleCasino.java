@@ -1,11 +1,9 @@
-import player_data.Cars;
-import player_data.Houses;
-import player_data.Jobs;
+import player_data.Car;
+import player_data.House;
+import player_data.PlayerItem;
 import player_data.enums.Cars;
 import player_data.enums.Houses;
-import player_data.enums.Jobs;
 import game_data.DataFields;
-import interfaces.EnumData;
 import utils.GameUtils;
 import utils.MenuManager;
 import game_data.SaveManager;
@@ -14,18 +12,18 @@ import java.util.Scanner;
 
 // GameMaster is a singleton class and only one can exist at any given time. Access using GameMaster.getInstance()
 // It is essentially a facade class for the console to have all the data needed to run the game in one place
-public class GameMaster
+public class GameManager
 {
-    private static GameMaster instance;
+    private static GameManager instance;
     private DataFields gameData;
     private SaveManager save;
-    private GameMaster()
+    private GameManager()
     {
         runMainMenu();
     }
-    public static GameMaster getInstance()
+    public static GameManager getInstance()
     {
-        if(instance == null) instance = new GameMaster();
+        if(instance == null) instance = new GameManager();
         return instance;
     }
 
@@ -60,24 +58,25 @@ public class GameMaster
     }
     public void upgradeItem()
     { // TODO: Finish upgradeItem by adding the ability to buy items and update the save file
-        Scanner input = new Scanner(System.in);
-        int choice = MenuManager.upgradeShopMenu();
         boolean purchaseSuccessful = false;
-        EnumData current = null;
+        Scanner input = new Scanner(System.in);
+
+        int choice = MenuManager.upgradeShopMenu(); // 1: House, 2: Car, 3: Back
+
+        PlayerItem<?> current = null;
         switch(choice)
         {
-            case 1:
+            case 1: // House
+                current = new House(this.gameData.getHouse().getCurrentItem());
                 System.out.println("What house would you like to buy?\n");
-                current = this.gameData.getHouse();
-                int currentHouseOrd = current.getHouseNumber();
-                current.listAll(currentHouseOrd);
+                current.listAll();
                 break;
-            case 2:
-                Cars currentCar = this.gameData.getCar(); // Car that is currently owned
-                int upgradeChoice = currentCar.upgrade();
-                purchaseSuccessful = makePurchase(currentCar, upgradeChoice);
+            case 2: // Car
+                current = new Car(this.gameData.getCar().getCurrentItem());
+                current.listAll();
+                //int upgradeChoice = current.upgrade();
                 break;
-            case 3:
+            case 3: // Back
                 runGameMenu();
                 break;
             default:
@@ -85,36 +84,6 @@ public class GameMaster
                 upgradeItem();
         }
         System.out.println();
-    }
-
-    // type: The enum constant currently owned by user in the field being upgraded
-    // upgradeChoice: The menu choice(ordinal) of the requested upgrade
-    private boolean makePurchase(EnumData type, int upgradeChoice) // Helper method for upgradeItem returns whether the purchase was successful. upgradeChoice is the ordinal of the enum to upgrade to
-    { // TODO: This method should be combined with upgradeItem()
-        int money = this.gameData.getMoney();
-        EnumData upgrade = null;
-        if(type instanceof Cars) {
-            Cars currentCar = (Cars) type;
-            upgrade = GameUtils.getCarAt(upgradeChoice); // TODO implement for all types
-        }
-        else if(type instanceof Houses) {
-
-        }
-        else if(type instanceof Jobs) {
-
-        } else {
-
-        }
-        System.out.println("Want to upgrade to: " + upgrade + "?");
-        int price = upgrade.getPrice(); // TODO implement actually purchasing all items
-        if(price > money) {
-            System.out.println("You do not have enough money to buy this item.");
-        } else {
-            this.gameData.setMoney(money - price);
-            System.out.println("Purchase successful.");
-            return true;
-        }
-        return false;
     }
 
     public void runDataManagementMode(SaveManager saveToChange) // When this method is called, GameMaster does not yet have a SaveManager, so one is passed as a parameter for temporary use
@@ -151,8 +120,6 @@ public class GameMaster
             runHome();
         } else if(requestedMenu == 2) { // CASINO MENU 1: PLAY BLACKJACK 2: PLAY ROULETTE 3: PLAY COIN-FLIPS 4: VIEW PRIZES 5: BACK
             runCasino();
-        } else if(requestedMenu == 3) { // JOB MENU 1: WORK 2: VIEW JOB DESCRIPTION 3: ASK FOR A RAISE 4: BACK
-            runJob();
         } else if(requestedMenu == 4) { // UPGRADE MENU: 1: HOUSE 2: CAR
             upgradeItem();
         }
@@ -205,29 +172,10 @@ public class GameMaster
             runHome();
      }
 
-     /* JOB */
-     public void runJob()
-     {
-        int input = MenuManager.jobMenu();
-            System.out.println();
-            switch(input)
-            {
-                case 1: // WORK
-                    System.out.println("Work");
-                    break;
-                case 2: // VIEW JOB DESCRIPTION
-                    System.out.println("Your job: " + this.save.getDataFile().getData().getJob() + "\n");
-                    break;
-                case 3: // ASK FOR A RAISE
-                    System.out.println("Ask for a raise");
-                    break;
-                case 4: // BACK
-                    System.out.println("Back");
-                    runGameMenu();
-            }
-     }
 
-    /* END JOB */
+
+
+
 
      /* HELPER METHODS */
      private boolean yesNoInput(String prompt) // return true if yes, false if no

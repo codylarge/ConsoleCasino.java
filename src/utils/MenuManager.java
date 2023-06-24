@@ -30,12 +30,11 @@ public class MenuManager
 
     public static int gameMenu() // This is the menu the user goes to directly after selecting save, calls respective menu's directly as no data is needed
     {
-        int bounds [] = {1,4}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
+        int bounds [] = {1,3}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
         System.out.println("Where would you like to go?");
         System.out.println("[1] Home");
         System.out.println("[2] Casino");
-        System.out.println("[3] Job");
-        System.out.println("[4] Upgrade Shop");
+        System.out.println("[3] Upgrade Shop");
         int choice = sc.nextInt();
         if( choice >= bounds[0] && choice <= bounds[1])
         {
@@ -44,25 +43,6 @@ public class MenuManager
         } else {
             System.out.println("Invalid choice");
             return gameMenu();
-        }
-    }
-
-    public static int jobMenu()
-    {
-        int bounds [] = {1,4}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
-        System.out.println("What would you like to do?");
-        System.out.println("[1] Work");
-        System.out.println("[2] View job description");
-        System.out.println("[3] Ask for a raise");
-        System.out.println("[4] Back");
-        int choice = sc.nextInt();
-        if(choice >= bounds[0] && choice <= bounds[1])
-        {
-            clearConsole();
-            return choice;
-        } else {
-            System.out.println("Invalid choice");
-            return jobMenu();
         }
     }
 
@@ -107,13 +87,12 @@ public class MenuManager
 
     public static int dataManagementMenu()
     {
-        int bounds [] = {1,5}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
-        System.out.println("Enter data to change [Money, Car, House, Job]: ");
+        int bounds [] = {1,4}; // CHANGE WHEN ADDING/REMOVING OPTIONS FROM MENU
+        System.out.println("Enter data to change [Money, Car, House]: ");
         System.out.println("[1] Money");
         System.out.println("[2] House");
         System.out.println("[3] Car");
-        System.out.println("[4] Job");
-        System.out.println("[5] Back");
+        System.out.println("[4] Back");
         int choice = sc.nextInt();
         if( choice >= bounds[0] && choice <= bounds[1])
         {

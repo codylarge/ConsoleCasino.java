@@ -1,11 +1,8 @@
 package game_data;
-
-import player_data.Cars;
-import player_data.Houses;
-import player_data.Jobs;
+import player_data.Car;
+import player_data.House;
 import player_data.enums.Cars;
 import player_data.enums.Houses;
-import player_data.enums.Jobs;
 
 
 // The DataFields class is a class that stores some data about the player that will be changed throughout the game such as cash for easy access.
@@ -14,24 +11,21 @@ public class DataFields
 {
     /* DATA */
     int money;
-    Cars car;
-    Houses house;
-    Jobs job;
+    Car car;
+    House house;
 
-
-    public DataFields()
+    public DataFields() // Not yet used
     {
         this.money = 0;
         this.car = null;
         this.house = null;
-        this.job = null;
     }
-    public DataFields(int money, Cars car, Houses house, Jobs job)
+
+    public DataFields(int money, Car car, House house)
     {
         this.money = money;
         this.car = car;
         this.house = house;
-        this.job = job;
     }
 
     public void setMoney(int money)
@@ -39,19 +33,10 @@ public class DataFields
         this.money = money;
     }
 
-    public void setJob(String job)
-    {
-        try {
-            this.job = Jobs.valueOf(job.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Job not found: " + job);
-        }
-    }
-
     public void setCar(String car)
     {
         try {
-            this.car = Cars.valueOf(car.toUpperCase());
+            this.car = new Car(Cars.valueOf(car.toUpperCase()));
         } catch (IllegalArgumentException e) {
             System.out.println("Car not found: " + car);
         }
@@ -59,7 +44,7 @@ public class DataFields
     public void setHouse(String house)
     {
         try {
-            this.house = Houses.valueOf(house.toUpperCase());
+            this.house = new House(Houses.valueOf(house.toUpperCase()));
         } catch (IllegalArgumentException e) {
             System.out.println("House not found: " + house);
         }
@@ -68,21 +53,16 @@ public class DataFields
     {
         return this.money;
     }
-    public Cars getCar()
+    public Car getCar()
     {
         return this.car;
     }
-    public Houses getHouse()
+    public House getHouse()
     {
         return this.house;
     }
-    public Jobs getJob()
-    {
-        return this.job;
-    }
-
     public String toString()
     {
-        return "Money: " + this.money + "\nCar: " + this.car + "\nHouse: " + this.house + "\nJob: " + this.job;
+        return "Money: " + this.money + "\nCar: " + this.car + "\nHouse: " + this.house;
     }
 }

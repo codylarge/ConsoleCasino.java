@@ -31,11 +31,9 @@ public class SaveManager
                 if (line.startsWith("money =")) {
                     writer.println("money = " + this.df.getData().getMoney());
                 } else if (line.toLowerCase().startsWith("house")) {
-                    writer.println("house = " + this.df.getData().getHouse().writeToFile());
+                    writer.println("house = " + this.df.getData().getHouse().getTitle());
                 } else if (line.toLowerCase().startsWith("car")) {
-                    writer.println("car = " + this.df.getData().getCar().writeToFile());
-                } else if (line.toLowerCase().startsWith("job")) {
-                    writer.println("job = " + this.df.getData().getJob().writeToFile());
+                    writer.println("car = " + this.df.getData().getCar().getTitle());
                 } else {
                     writer.println(line);
                 }

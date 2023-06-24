@@ -1,6 +1,5 @@
 DATA
-money = 2000001
-job = JOB1
+money = 50000
 house = HOUSE1
 car = CAR1
 --------------------

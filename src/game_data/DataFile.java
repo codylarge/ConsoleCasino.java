@@ -72,22 +72,16 @@ public class DataFile
                     this.updateDataField(0);
                 }
             } else if (line.toLowerCase().startsWith("house")) { // TODO:remove duplicate code in if statements
-                if(split.length > 1 && !split[1].contains("null")) {
+                if(split.length > 1 && !split[1].contains("null")) { // Make sure that
                     this.updateDataField(split[1].trim());
                 } else {
-                    this.updateDataField("DEFAULTHOUSE");
+                    this.updateDataField("HOUSE0");
                 }
             } else if (line.toLowerCase().startsWith("car")) {
                 if(split.length > 1 && !split[1].contains("null")) {
                     this.updateDataField(split[1].trim());
                 } else {
-                    this.updateDataField("DEFAULTCAR");
-                }
-            } else if (line.toLowerCase().startsWith("job")) {
-                if(split.length > 1 && !split[1].contains("null")) {
-                    this.updateDataField(split[1].trim());
-                } else {
-                    this.updateDataField("DEFAULTJOB");
+                    this.updateDataField("CAR0");
                 }
             }
         }
@@ -106,10 +100,6 @@ public class DataFile
         else if(uc.contains("HOUSE"))
         {
             this.data.setHouse(uc);
-        }
-        else if(uc.contains("JOB"))
-        {
-            this.data.setJob(uc);
         }
         else
         {
